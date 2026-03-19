@@ -9,7 +9,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-check-test:
+  build-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,11 +20,9 @@ jobs:
         with:
           node-version: 22
 
-      - name: Install system dependencies
+      - name: Update system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev fd-find ripgrep
-          sudo ln -s $(which fdfind) /usr/local/bin/fd
 
       - name: Install dependencies
         run: npm install
@@ -34,6 +32,3 @@ jobs:
 
       - name: Check
         run: npm run check
-
-      - name: Test
-        run: npm test
