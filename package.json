@@ -1,0 +1,51 @@
+{
+	"name": "awto-pi-lot",
+	"version": "2.61.0",
+	"type": "module",
+	"description": "pi-coding-agent extension that adds PPQ.ai provider and default AutoClaw model",
+	"pi": {
+		"extensions": [
+			"./src/index.ts"
+		]
+	},
+	"scripts": {
+		"clean": "shx rm -rf dist",
+		"build": "esbuild src/index.ts --bundle=false --format=esm --platform=node --outdir=dist && shx cp README.md dist/",
+		"check": "npm install && npm run build && biome check --write --error-on-warnings .",
+		"prepare": "husky"
+	},
+	"keywords": [
+		"coding-agent",
+		"ai",
+		"llm",
+		"cli",
+		"tui",
+		"agent",
+		"ppq",
+		"ppq.ai",
+		"autoclaw",
+		"bitcoin",
+		"lightning"
+	],
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nblockchain/awto-pi-lot.git"
+	},
+	"dependencies": {
+		"@mariozechner/pi-ai": "*",
+		"@mariozechner/pi-coding-agent": "*"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.3.5",
+		"@types/node": "^22.10.5",
+		"esbuild": "^0.25.3",
+		"husky": "^9.1.7",
+		"shx": "^0.4.0",
+		"tsx": "^4.20.3",
+		"typescript": "^5.9.2"
+	},
+	"engines": {
+		"node": ">=20.0.0"
+	}
+}
